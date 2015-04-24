@@ -24,22 +24,22 @@ describe "Library object" do
       context "with no parameters" do
         it "has no books" do
           lib = Library.new
-          expect(lib).to eq(0)
+          expect(lib).to have(0).books
         end
       end
 
       context "with a yaml file parameter" do
         it "has five books" do
-          expect(@lib).to eq(0)
+          expect(@lib).to have(5).books
         end
         
         it "returns all the books in a given category" do
-          expect(@lib.get_books_in_category(:development)).to eq(2)
+          expect(@lib.get_books_in_category(:development)).to have(2).books
         end
  
         it "accepts new books" do
           @lib.add_book( Book.new("Designing for the Web", "Mark Boulton", :design) )
-          expect(@lib.get_book("Designing for the Web").to be_an_instance_of(Book))
+          expect((@lib.get_book("Designing for the Web")).to be_an_instance_of(Book))
         end
  
         it "saves the library" do
